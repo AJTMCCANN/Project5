@@ -4,8 +4,8 @@ var this_album_tracks = []
 
 // After the search results are displayed, you can click through an album to show its details.
 
-// When you want to return to the main page to start a new search, or return to the previous search results, you'll need to 
-// remove this information from the DOM.  
+// When you want to return to the main page to start a new search, or return to the previous search results, you'll need to
+// remove this information from the DOM.
 
 function remove_clickthrough_page() {
 	$("#horizontal-bar").hide()
@@ -16,7 +16,7 @@ function remove_clickthrough_page() {
 	$("#this-tracks").remove()
 }
 
-// Takes an array of album objects, constructs HTML to display them on the page, then inserts that HTML 
+// Takes an array of album objects, constructs HTML to display them on the page, then inserts that HTML
 
 function add_search_result_html(some_albums){
 	$.each(some_albums, function(i, album) {
@@ -28,13 +28,13 @@ function add_search_result_html(some_albums){
 
 		// There can be more than one artist per album.  However, the first artist name can and sometimes does contain the names of multiple artists
 
-		album_artists += album["artists"][0]["name"]
+		album_artists = album["artists"][0]["name"]
 		$albums_html = $(`<li><div class="album-wrap"><a href="index.html"><img class="album-art" src="${album_art_url}"></a></div><span class="album-title">${album_title}</span><span class="album-artist">${album_artists}</span></li>`)
 		$("#albums").append($albums_html)
 	})
 }
 
-// The function that brings everything together.  
+// The function that brings everything together.
 
 function get_albums(some_search) {
 
@@ -65,15 +65,15 @@ function get_albums(some_search) {
 		} else {
 
 			$("#albums li").remove()
-			
+
 			$no_albums = $(`<li class='no-albums desc'><i class='material-icons icon-help'>help_outline</i>No albums found that match: ${some_search}.</li>`)
-			
+
 			$("#albums").append($no_albums)
 		}
 	})
 }
 
-// Event handling 
+// Event handling
 
 // when the search form submits, remove the album details from the DOM (if any were showing), then display the new search results
 
